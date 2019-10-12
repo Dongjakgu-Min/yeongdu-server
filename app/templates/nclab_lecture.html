@@ -1,0 +1,50 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="ui breadcrumb">
+    <a href="/" class="section">Home</a>
+    <i class="right angle icon divider"></i>
+    <a href="/nclab" class="section">NCLab Mirror</a>
+    <i class="right angle icon divider"></i>
+    <div class="active section">{{ lec }}</div>
+</div>
+<div class="ui header">
+    <h1 class="ui header">{{ lec }}</h1>
+</div>
+<p>강의에 첨부되어 있는 파일을 받고 싶다면, 우측 Dropdown 버튼을 눌러 주세요.</p>
+<table class="ui celled table">
+    <thead>
+    <tr>
+        <th class="center aligned">글 순서</th>
+        <th class="center aligned">글 제목</th>
+        <th class="center aligned">올린 날짜</th>
+        <th class="center aligned">첨부 파일</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for doc in documents %}
+    <tr>
+        <td>{{doc['access']}}</td>
+        <td>
+            <a href={{doc['link']}} target="_blank">{{doc['title']}}</a>
+        </td>
+        <td>{{doc['date']}}</td>
+        <td>
+            <div class="ui dropdown">
+                <div class="text">첨부 파일</div>
+                <i class="dropdown icon"></i>
+                <div class="menu" id={{doc['access']}}>
+                    {% for item in doc['attach'] %}
+                        <a class="item" href='/nclab/attach/{{item.id}}'>
+                            <i class="save icon"></i>{{ item['filename'] }}
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<script src="{{ url_for('static', filename='script/nclab_lec.js') }}"></script>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/nclab_lec.css') }}">
+{% endblock %}

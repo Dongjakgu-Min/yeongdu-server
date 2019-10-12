@@ -1,0 +1,4 @@
+*.env
+/upload
+/venv
+/app/config.py

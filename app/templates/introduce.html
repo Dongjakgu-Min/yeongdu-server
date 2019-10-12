@@ -1,0 +1,59 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="ui breadcrumb">
+    <a href="/" class="section">Home</a>
+    <i class="right angle icon divider"></i>
+    <div class="active section">Introduce Homepage</div>
+</div>
+<h1 class="ui header">환영합니다.</h1>
+<p>이 페이지는 학과 생활에 있어서 편의를 제공하기 위해 만들어진 페이지입니다. 하지만 완벽하지 않으니, 주의해 주세요!</p>
+<h2 class="ui header">사용 시 유의해야 하는 점</h2>
+<div class="ui segment">
+    <div class="ui list">
+        <div class="item">
+            <i class="exclamation triangle icon"></i>
+            <div class="content">
+                <div class="header">
+                    서버는 완벽하지 않습니다.
+                </div>
+                <div class="description">
+                    제 나름대로 노력하고 있지만, 많이 부족합니다ㅠㅠ 이해해 주세요...
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <i class="exclamation triangle icon"></i>
+            <div class="content">
+                <div class="header">
+                    자료가 바로바로 올라가지 않을 수도 있습니다.
+                </div>
+                <div class="description">
+                    제 기술의 한계로 인해, 바로바로 가져오게 하면 느려질 거 같아 그렇게 구현하지 않았습니다. 그래도 교수님이 기습은 하지 않으실겁니다. 아마도...
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <i class="exclamation triangle icon"></i>
+            <div class="content">
+                <div class="header">
+                    즉각적인 오류 수정을 못합니다.
+                </div>
+                <div class="description">
+                    조금만 기다려주세요!
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <i class="exclamation triangle icon"></i>
+            <div class="content">
+                <div class="header">
+                    이 페이지는 태블릿 및 PC에 최적화되어 있습니다.
+                </div>
+                <div class="description">
+                    모바일은 추후 지원할 예정입니다. 만약 모바일로 접속하게 되면 사용이 불편해집니다.z
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
