@@ -14,3 +14,4 @@ DATABASE_URI = 'mysql+pymysql://{}:{}@localhost:{}/{}'.format(
     DATABASE_PORT,
     DATABASE_NAME
 )
+
