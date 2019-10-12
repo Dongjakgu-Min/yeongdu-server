@@ -1,0 +1,90 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="ui breadcrumb">
+  <a href="/" class="section">Home</a>
+  <i class="right angle icon divider"></i>
+  <div class="active section">Info</div>
+</div>
+<h1>누가 만들었나요?</h1>
+<div class="ui segment">
+    <div class="ui items">
+        <div class="item">
+            <div class="image">
+                <img src="{{ url_for('static', filename='img/YW_001.png') }}" alt="체고조넘">
+            </div>
+            <div class="content">
+                <a class="header">Dongjakgu-min</a>
+                <div class="meta">
+                    <span>숭실대학교 스마트시스템소프트웨어학과</span>
+                </div>
+                <div class="meta">
+                    <span>yeongdu9812@gmail.com</span>
+                </div>
+                <div class="description">
+                    <p title="실제 집은 전북 정읍에 있습니다.">고정 닉네임은 동작구민을 사용하고 있습니다만, 실제 집이 동작구에 없어서 슬픕니다.<br>
+                        저에게 동작구 집을 선물해 주시려면 아래 계좌에 돈을 넣어주세요. 그러면 제가 행복해질 수 있습니다.
+                    </p>
+                </div>
+                <div class="extra" style="margin-top: 3%">
+                    우리은행 1002-456-671732
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<h1>Special Thanks To</h1>
+<div class="ui segment">
+    <div class="ui relaxed list">
+        <div class="item">
+            <i class="user icon"></i>
+            <div class="content">
+                <div class="header">Ruby</div>
+                <div class="description">Front-End와 Flask Wiki를 제공해 주었습니다.</div>
+            </div>
+        </div>
+        <div class="item">
+            <i class="user icon"></i>
+            <div class="content">
+                <div class="header">agurimon</div>
+                <div class="description">Flask 입문에 큰 도움이 되었습니다. 뚝딱뚝딱 플라스크 짱짱맨</div>
+            </div>
+        </div>
+        <div class="item">
+            <i class="user icon"></i>
+            <div class="content">
+                <div class="header">gomjellie</div>
+                <div class="description">이상한 삽질을 하고 있을때 방향을 제대로 잡아준 분입니다.</div>
+            </div>
+        </div>
+        <div class="item">
+            <i class="user icon"></i>
+            <div class="content">
+                <div class="header">parkmint</div>
+                <div class="description">첨부파일 문제로 고민하고 있을때 같이 고민해주신 분입니다. 맥북 잘 쓰고 계시나요?</div>
+            </div>
+        </div>
+        <div class="item">
+            <i class="user icon"></i>
+            <div class="content">
+                <div class="header">0G</div>
+                <div class="description">제 캐리커쳐를 그려준 분입니다. 저를 찾을 수 있나요?</div>
+            </div>
+        </div>
+        <div class="item">
+            <i class="laptop icon"></i>
+            <div class="content">
+                <div class="header">내 노트북</div>
+                <div class="description">무수한 삽질을 버텨준 내 노트북에 건배를</div>
+            </div>
+        </div>
+        <div class="item">
+            <i class="server icon"></i>
+            <div class="content">
+                <div class="header">내 서버</div>
+                <div class="description">낮은 성능에도 불구하고 서버를 지탱해주고 있는 고마운 기기입니다.</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

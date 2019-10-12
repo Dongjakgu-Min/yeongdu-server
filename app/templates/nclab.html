@@ -1,0 +1,108 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="ui breadcrumb">
+    <a href="/" class="section">Home</a>
+    <i class="right angle icon divider"></i>
+    <div class="active section">NCLab Mirror</div>
+</div>
+
+<h1 class="ui header">NCLab Mirror</h1>
+
+<p>Apple Device에서 NCLab의 자료를 직접 다운로드 받기는 번거로운 일입니다. 하지만 이 Mirror와 함께라면, 걱정 없습니다.</p>
+<div class="ui top attached tabular menu">
+    <a class="item active" data-tab="recent">최근 자료</a>
+    <a class="item" data-tab="notice">최근 공지</a>
+    <a class="item" data-tab="hw">최근 과제</a>
+    <a class="item" data-tab="all">전체 자료</a>
+</div>
+<div class="ui bottom attached active tab segment" data-tab="recent">
+    <table class="ui celled table">
+        <thead>
+        <tr>
+            <th class="center aligned">교과명</th>
+            <th class="center aligned">학기</th>
+            <th class="center aligned">파일이름</th>
+            <th class="center aligned">다운로드</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for attachment in attachments %}
+        <tr>
+            <td class="center aligned">{{attachment['lec_name']}}</td>
+            <td class="center aligned">{{attachment['lec_semester']}}</td>
+            <td class="center aligned">{{attachment['filename']}}</td>
+            <td class="center aligned"><a href=/nclab/attach/{{attachment['id']}}>이동</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="ui bottom attached tab segment" data-tab="notice">
+    <table class="ui celled table">
+        <thead>
+        <tr>
+            <th class="center aligned">교과명</th>
+            <th class="center aligned">학기</th>
+            <th class="center aligned">공지사항</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for noti in notice %}
+        <tr>
+            <td class="center aligned">{{noti['name']}}</td>
+            <td class="center aligned">{{noti['semester']}}</td>
+            <td class="center aligned"><a href={{noti['link']}} target="_blank">{{noti['title']}}</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="ui bottom attached tab segment" data-tab="hw">
+    <table class="ui celled table">
+        <thead>
+        <tr>
+            <th class="center aligned">교과명</th>
+            <th class="center aligned">학기</th>
+            <th class="center aligned">공지사항</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for homework in homeworks %}
+        <tr>
+            <td class="center aligned">{{homework['name']}}</td>
+            <td class="center aligned">{{homework['semester']}}</td>
+            <td class="center aligned"><a href={{homework['link']}} target="_blank">{{homework['title']}}</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="ui bottom attached tab segment" data-tab="all">
+    <table class="ui celled table">
+        <thead>
+        <tr>
+            <th class="center aligned">교과명</th>
+            <th class="center aligned">학기</th>
+            <th class="center aligned">공지사항</th>
+            <th class="center aligned">강의자료</th>
+            <th class="center aligned">Report</th>
+            <th class="center aligned">Q & A</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for lecture in lectures %}
+        <tr>
+            <td class="center aligned">{{lecture['name']}}</td>
+            <td class="center aligned">{{lecture['semester']}}</td>
+            <td class="center aligned"><a href={{lecture['notice']}}>이동</a></td>
+            <td class="center aligned"><a href={{lecture['lec']}}>이동</a></td>
+            <td class="center aligned"><a href={{lecture['report']}}>이동</a></td>
+            <td class="center aligned"><a href={{lecture['qa']}}>이동</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+<script src="{{url_for('static', filename='script/nclab_main.js')}}"></script>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/nclab_main.css') }}">
+{% endblock %}

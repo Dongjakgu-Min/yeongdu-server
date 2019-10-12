@@ -1,0 +1,34 @@
+{% extends 'index.html' %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+<div id="main" style="margin: 30px 0 30px 0">
+    <h1>환영합니다.</h1>
+    <p>이 웹 사이트는 개인 사비로 운영중입니다. 그렇기 때문에, 최대한 그럴 일을 없게 만들고 있으나 중간에 갑자기 접속이 안되는 일이 벌어질 수 있습니다.
+        이 점 양해해 주시기 바랍니다.<br/>이 페이지에서는 다음과 같은 서비스를 운영하고 있습니다.</p>
+</div>
+<h2>NCLab 관련 자료들</h2>
+<div class="titleList">
+    <a class="titleItem" href="/nclab">
+        <div class="header" style="margin-bottom: 10px"><h2>NCLab 자료</h2></div>
+        <div class="description">강의 자료를 iPad 혹은 iPhone에서 열람할 수 있습니다.</div>
+    </a>
+    <a class="titleItem" href="/nclab">
+        <div class="header" style="margin-bottom: 10px"><h2>NCLab 과제</h2></div>
+        <div class="description">중요한 과제가 올라왔는지 열람할 수 있습니다.</div>
+    </a>
+    <a class="titleItem" href="/nclab">
+        <div class="header" style="margin-bottom: 10px"><h2>NCLab 공지</h2></div>
+        <div class="description">교수님이 올리신 수업 관련 공지를 빠르게 추려서 볼 수 있습니다.</div>
+    </a>
+    <a class="titleItem" href="/nclab">
+        <div class="header" style="margin-bottom: 10px"><h2>NCLab 링크 지원</h2></div>
+        <div class="description">더 자세한 내용을 보고 싶다면, 직접 그 문서로 들어가 볼 수 있습니다.</div>
+    </a>
+</div>
+
+<div>
+    <div id="main-banner">이 많은 기능을 단 한 곳에서.</div>
+</div>
+{% endblock %}
+
+
