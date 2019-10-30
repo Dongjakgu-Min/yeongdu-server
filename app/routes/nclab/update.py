@@ -9,6 +9,7 @@ from app.tool.SNCP import board
 from app.tool.SNCP import document
 
 from app.tool.Database.lecture_tool import document_checker
+from app.tool.Mailer import send
 
 from app.models.nclab import Lectures
 from app.models.nclab import Documents
@@ -20,6 +21,7 @@ index = Blueprint('update', __name__)
 @index.route('/lec', methods=["GET"])
 def update_lecture():
     nclab_lecture = lecture.lecture()
+    print(nclab_lecture)
 
     for lec in nclab_lecture:
         arg = [lec['semester'], lec['name'], lec['Q & A'], lec['강의자료'], lec['공지사항'], lec['Report']]
@@ -78,7 +80,9 @@ def update_document():
         try:
             doc_temp = Documents.query.filter_by(link=doc.link).first()
             doc_temp.content = doc_content.get_content()['content']
+
             Base.session.commit()
+
         except exc.SQLAlchemyError:
             return "Fail to add Document content", 500
 

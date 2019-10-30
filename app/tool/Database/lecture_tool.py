@@ -1,16 +1,12 @@
-from flask import render_template, Blueprint,request
 from app import app, Base
 
 from sqlalchemy import exc
-import requests
-
-from app.tool.SNCP import lecture
-from app.tool.SNCP import board
-from app.tool.SNCP import document
 
 from app.models.nclab import Lectures
 from app.models.nclab import Documents
-from app.models.nclab import Attachments
+from app.models.mail import Mails
+
+from app.tool.Mailer.send import send_mail
 
 
 def document_checker(_document, _board_id, _type):
@@ -24,6 +20,11 @@ def document_checker(_document, _board_id, _type):
             try:
                 Base.session.add(new_doc)
                 Base.session.commit()
+
+                sub = Mails.query.filter_by(lecture_id=_board_id).all()
+                for p in sub:
+                    send_mail(p.email, _board_id, doc['title'])
+
             except exc.SQLAlchemyError:
                 return exc.SQLAlchemyError, 500
 

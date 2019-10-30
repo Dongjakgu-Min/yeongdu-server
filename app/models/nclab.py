@@ -2,8 +2,12 @@ from sqlalchemy import ForeignKey, DateTime
 from sqlalchemy.orm import relationship, backref
 
 from app import Base
-import re
 import datetime
+
+
+def generate_code(url_report):
+    code = url_report.split('/')[-1].split('_rep')[0]
+    return code
 
 
 class Lectures(Base.Model):
@@ -18,14 +22,16 @@ class Lectures(Base.Model):
     lec = Base.Column(Base.String(100), nullable=False)
     notice = Base.Column(Base.String(100), nullable=False)
     report = Base.Column(Base.String(100), nullable=False)
+    code = Base.Column(Base.String(50), nullable=False)
 
     def __init__(self, semester, name, qa, lec, notice, report):
-        self.semester = re.sub(r'\(\)', '', semester)
+        self.semester = semester
         self.name = name
         self.qa = qa
         self.lec = lec
         self.notice = notice
         self.report = report
+        self.code = generate_code(report)
 
     def as_dict(self):
         return {x.name: getattr(self, x.name) for x in self.__table__.columns}

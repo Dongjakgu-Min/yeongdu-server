@@ -1,0 +1,48 @@
+{% extends 'index.html' %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/mypage.css') }}">
+<div class="ui breadcrumb">
+    <a href="/" class="section">Home</a>
+    <i class="right angle icon divider"></i>
+    <div class="active section">Settings</div>
+</div>
+
+<h1 class="ui header">개인 환경설정</h1>
+<div class="ui segment">
+    <div id="content">
+        <form class="ui form" action="/mypage/emailService" method="POST">
+            <h2>이메일 서비스</h2>
+            <p>새로운 수업자료가 올라오면 이메일로 바로 알려드립니다.</p>
+            {% if ca is sameas true %}
+            <div class="ui checked checkbox">
+                <input type="checkbox" name="ca-email" checked="">
+                <label>컴퓨터구조 이메일 서비스 받기</label>
+            </div>
+            {% else %}
+            <div class="ui checkbox">
+                <input type="checkbox" name="ca-email">
+                <label>컴퓨터구조 이메일 서비스 받기</label>
+            </div>
+            {% endif %}
+            <br>
+            {% if cn is sameas true %}
+            <div class="ui checked checkbox">
+                <input type="checkbox" name="cn-email" checked="">
+                <label>컴퓨터네트워크 이메일 서비스 받기</label>
+            </div>
+            {% else %}
+            <div class="ui checkbox">
+                <input type="checkbox" name="cn-email">
+                <label>컴퓨터네트워크 이메일 서비스 받기</label>
+            </div>
+            {% endif %}
+            <div id="setEmail" class="field">
+                <label>수신 이메일 주소</label>
+                <input type="text" name="addr-email" placeholder="이메일 주소">
+            </div>
+            <p>만약 입력하지 않는다면 회원가입시 입력한 이메일로 자동 변경됩니다.</p>
+            <button class="ui button" type="submit">설정</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

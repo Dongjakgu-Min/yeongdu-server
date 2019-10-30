@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}">
+<div id="login">
+    <div class="ui segment">
+        <h2>회원가입</h2>
+        <form class="ui form" method="POST">
+            <div class="field">
+                <label>ID</label>
+                <input name="username" type="text" placeholder="아이디">
+            </div>
+            <div class="field">
+                <label>PW</label>
+                <input name="password" type="password" placeholder="비밀번호">
+            </div>
+            <div class="field">
+                <label>Email</label>
+                <input name="email" type="text" placeholder="이메일 주소">
+            </div>
+            <input class="ui button" type="submit" value="회원가입">
+        </form>
+    </div>
+</div>
+{% endblock %}

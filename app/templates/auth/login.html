@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}">
+<script src="{{ url_for('static', filename='script/signup.js') }}"></script>
+<div id="login">
+    <div class="ui segment">
+        <h2>로그인</h2>
+        <form id="loginForm" class="ui form" method="POST">
+            <div class="field">
+                <label>ID</label>
+                <input name="username" type="text" placeholder="아이디">
+            </div>
+            <div class="field">
+                <label>PW</label>
+                <input name="password" type="password" placeholder="비밀번호">
+            </div>
+            <input class="ui button" type="submit" value="로그인">
+        </form>
+    </div>
+    <a href="signup">아직 회원이 아니시라면 여기를 눌러 가입해주세요.</a>
+</div>
+{% endblock %}

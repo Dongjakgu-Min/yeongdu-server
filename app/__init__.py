@@ -1,13 +1,12 @@
-from flask import Flask, render_template
+import signal
+
+from flask import Flask, session
 from flask_sqlalchemy import SQLAlchemy
-
 from sqlalchemy import create_engine
-from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
-
+from sqlalchemy.orm import scoped_session, sessionmaker
 
 from .config import DATABASE_URI
-import signal
 
 app = Flask(__name__)
 engine = create_engine(DATABASE_URI, convert_unicode=True)
@@ -26,8 +25,9 @@ app.config['SESSION_TYPE'] = 'filesystem'
 Base = SQLAlchemy(app)
 
 from app.models import *
+from app.routes import *
 
-Base.metadata.create_all(engine)
+Base.create_all()
 
 
 def signal_handler(sig, frame):
@@ -39,9 +39,9 @@ signal.signal(signal.SIGABRT, signal_handler)
 signal.signal(signal.SIGSEGV, signal_handler)
 signal.signal(signal.SIGHUP, signal_handler)
 
-from app.routes import *
-
 
 @app.route('/')
 def main():
+    if not session.get('logged_in'):
+        return render_template('main.html')
     return render_template('main.html')
