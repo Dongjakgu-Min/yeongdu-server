@@ -1,5 +1,5 @@
 *.env
-/upload
-/venv
-/app/config.py
+upload
+venv
+app/config.py
 */__pycache__/*

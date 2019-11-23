@@ -49,8 +49,8 @@
         <tbody>
         {% for noti in notice %}
         <tr>
-            <td class="center aligned">{{noti['name']}}</td>
-            <td class="center aligned">{{noti['semester']}}</td>
+            <td class="center aligned">{{noti['lec_name']}}</td>
+            <td class="center aligned">{{noti['lec_semester']}}</td>
             <td class="center aligned"><a href={{noti['link']}} target="_blank">{{noti['title']}}</a></td>
         </tr>
         {% endfor %}
@@ -69,8 +69,8 @@
         <tbody>
         {% for homework in homeworks %}
         <tr>
-            <td class="center aligned">{{homework['name']}}</td>
-            <td class="center aligned">{{homework['semester']}}</td>
+            <td class="center aligned">{{homework['lec_name']}}</td>
+            <td class="center aligned">{{homework['lec_semester']}}</td>
             <td class="center aligned"><a href={{homework['link']}} target="_blank">{{homework['title']}}</a></td>
         </tr>
         {% endfor %}

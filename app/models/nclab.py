@@ -66,7 +66,10 @@ class Documents(Base.Model):
             self.datetime = datetime.datetime.today()
 
     def as_dict(self):
-        return {x.name: getattr(self, x.name) for x in self.__table__.columns}
+        result = {x.name: getattr(self, x.name) for x in self.__table__.columns}
+        result['lec_name'] = self.lecture.name if self.lecture else None
+        result['lec_semester'] = self.lecture.semester if self.lecture else None
+        return result
 
 
 class Attachments(Base.Model):
@@ -94,7 +97,10 @@ class Attachments(Base.Model):
         self.document_id = document_id
 
     def as_dict(self):
-        return {x.name: getattr(self, x.name) for x in self.__table__.columns}
+        result = {x.name: getattr(self, x.name) for x in self.__table__.columns}
+        result['lec_name'] = self.lecture.name if self.lecture else None
+        result['lec_semester'] = self.lecture.semester if self.lecture else None
+        return result
 
 
 class Comments(Base.Model):
@@ -119,4 +125,7 @@ class Comments(Base.Model):
         self.document_id = document_id
 
     def as_dict(self):
-        return {x.name: getattr(self, x.name) for x in self.__table__.columns}
+        result = {x.name: getattr(self, x.name) for x in self.__table__.columns}
+        result['lec_name'] = self.lecture.name if self.lecture else None
+        result['lec_semester'] = self.lecture.semester if self.lecture else None
+        return result

@@ -11,8 +11,10 @@ from app.models.nclab import *
 def nclab():
     result_lec, result_attach, result_notice, result_hw = list(), list(), list(), list()
 
-    for i in Lectures.query.all():
-        result_lec.append(i.as_dict())
+    lecture = Lectures.query.all()
+    result_lec = [x.as_dict() for x in lecture]
+
+    print(result_lec)
 
     result_attach = attachment()
     result_notice = document()
@@ -22,68 +24,33 @@ def nclab():
                            lectures=result_lec, attachments=result_attach,
                            notice=result_notice, homeworks=result_hw)
 
-
 @app.route('/nclab/notice', methods=['GET'])
 def nclab_notice():
-    result_notice = list()
-
-    for i in Documents.query.order_by(Documents.datetime.desc()).filter_by(board_type='d').limit(10).all():
-        temp = i.as_dict()
-        lec = Lectures.query.filter_by(id=temp['lecture_id']).first()
-        temp['name'] = lec.name
-        temp['semester'] = lec.semester
-        result_notice.append(temp)
-
-    return result_notice
+    notices = Documents.query.order_by(Documents.datetime.desc()) \
+        .filter_by(board_type='d').limit(10).all()
+    return [x.as_dict() for x in notices]
 
 
 @app.route('/nclab/homework', methods=['GET'])
 def nclab_homework():
-    result_hw = list()
-
-    for i in Documents.query.order_by(Documents.datetime.desc()).filter_by(board_type='rep').limit(10).all():
-        temp = i.as_dict()
-        lec = Lectures.query.filter_by(id=temp['lecture_id']).first()
-        temp['name'] = lec.name
-        temp['semester'] = lec.semester
-        result_hw.append(temp)
-
-    return result_hw
+    documents = Documents.query.order_by(Documents.datetime.desc()) \
+        .filter_by(board_type='rep').limit(10).all()
+    return [x.as_dict() for x in documents]
 
 
 def attachment():
-    result_attach = list()
-
-    for i in Attachments.query.order_by(Attachments.datetime.desc()).limit(10).all():
-        temp_dict = i.as_dict()
-        temp_dict['lec_name'] = i.lecture.name
-        temp_dict['lec_semester'] = i.lecture.semester
-        result_attach.append(temp_dict)
-
-    return result_attach
+    attachments = Attachments.query.order_by(Attachments.datetime.desc()) \
+        .limit(10).all()
+    return [x.as_dict() for x in attachments]
 
 
 def document():
-    result_notice = list()
-
-    for i in Documents.query.order_by(Documents.datetime.desc()).filter_by(board_type='d').limit(10).all():
-        temp = i.as_dict()
-        lec = Lectures.query.filter_by(id=temp['lecture_id']).first()
-        temp['name'] = lec.name
-        temp['semester'] = lec.semester
-        result_notice.append(temp)
-
-    return result_notice
+    documents = Documents.query.order_by(Documents.datetime.desc()) \
+        .filter_by(board_type='d').limit(10).all()
+    return [x.as_dict() for x in documents]
 
 
 def homework():
-    result_hw = list()
-
-    for i in Documents.query.order_by(Documents.datetime.desc()).filter_by(board_type='rep').limit(10).all():
-        temp = i.as_dict()
-        lec = Lectures.query.filter_by(id=temp['lecture_id']).first()
-        temp['name'] = lec.name
-        temp['semester'] = lec.semester
-        result_hw.append(temp)
-
-    return result_hw
+    homeworks = Documents.query.order_by(Documents.datetime.desc()) \
+        .filter_by(board_type='rep').limit(10).all()
+    return [x.as_dict() for x in homeworks]
