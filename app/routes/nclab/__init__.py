@@ -14,8 +14,6 @@ def nclab():
     lecture = Lectures.query.all()
     result_lec = [x.as_dict() for x in lecture]
 
-    print(result_lec)
-
     result_attach = attachment()
     result_notice = document()
     result_hw = homework()
