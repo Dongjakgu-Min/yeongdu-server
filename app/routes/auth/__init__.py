@@ -16,6 +16,8 @@ def login():
         password = request.form['password']
 
         check = Users.query.filter_by(username=username).first()
+        if check is None:
+            return redirect('/signup')
 
         if check_password_hash(check.password, password) is True:
             session['login'] = True
@@ -23,6 +25,13 @@ def login():
             return redirect('/')
         else:
             return redirect('/login')
+
+
+@app.route('/logout', methods=['POST'])
+def logout():
+    session['login'] = None
+    session['username'] = None
+    return redirect('/')
 
 
 @app.route('/signup',  methods=['GET', 'POST'])
@@ -33,6 +42,9 @@ def signup():
         username = request.form['username']
         password = request.form['password']
         email = request.form['email']
+
+        if len(username) < 6 or len(password) < 6:
+            return redirect('/signup')
 
         hash_pw = generate_password_hash(password)
 
