@@ -6,15 +6,14 @@
     <div class="ui segment">
         <h2>로그인</h2>
         <form id="loginForm" class="ui form" method="POST">
+            {{ form.csrf_token }}
             <div class="field">
-                <label>ID</label>
-                <input name="username" type="text" placeholder="아이디">
+                {{ form.id.label }} {{ form.id() }}
             </div>
             <div class="field">
-                <label>PW</label>
-                <input name="password" type="password" placeholder="비밀번호">
+                {{ form.pw.label }} {{ form.pw() }}
             </div>
-            <input class="ui button" type="submit" value="로그인">
+            {{ form.submit(class_="ui button") }}
         </form>
     </div>
     <a href="signup">아직 회원이 아니시라면 여기를 눌러 가입해주세요.</a>

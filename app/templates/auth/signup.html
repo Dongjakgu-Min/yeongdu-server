@@ -5,19 +5,17 @@
     <div class="ui segment">
         <h2>회원가입</h2>
         <form class="ui form" method="POST">
+            {{ form.csrf_token }}
             <div class="field">
-                <label>ID</label>
-                <input name="username" type="text" placeholder="아이디 (6자 이상)">
+                {{ form.id.label }} {{ form.id() }}
             </div>
             <div class="field">
-                <label>PW</label>
-                <input name="password" type="password" placeholder="비밀번호 (6자 이상)">
+                {{ form.pw.label }} {{ form.pw() }}
             </div>
             <div class="field">
-                <label>Email</label>
-                <input name="email" type="text" placeholder="이메일 주소">
+                {{ form.email.label }} {{ form.email() }}
             </div>
-            <input class="ui button" type="submit" value="회원가입">
+            {{ form.submit(class_="ui button") }}
         </form>
     </div>
 </div>
