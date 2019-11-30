@@ -49,8 +49,6 @@ def mail_sender():
         if cn_lec.id == i.lecture_id:
             cn_set = True
 
-    print('property : {0}'.format(request.form.get('ca-email')))
-
     if request.form.get('ca-email') is not None and ca_set is False:
         newbie = Mails(email, '201902_k1', usr.id, ca_lec.id)
         Base.session.add(newbie)
