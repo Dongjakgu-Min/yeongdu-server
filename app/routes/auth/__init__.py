@@ -44,8 +44,8 @@ def signup():
 
         return render_template("auth/signup.html", form=form)
     if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
+        username = request.form['id']
+        password = request.form['pw']
         email = request.form['email']
 
         if len(username) < 6 or len(password) < 6:
